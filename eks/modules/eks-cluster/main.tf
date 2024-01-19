@@ -7,7 +7,7 @@ module "eks" {
   version = "~> 19.0"
 
   cluster_name    = "tf-cluster"
-  cluster_version = "1.27"
+  cluster_version = "1.28"
 
   providers = {
     aws = aws.ap-northeast-2
@@ -40,7 +40,7 @@ module "eks" {
 
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
-    instance_types = ["t3.micro", "t3.medium"]
+    instance_types = ["t3.medium"]
     iam_role_additional_policies = {
       AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
     }
@@ -63,7 +63,7 @@ module "eks" {
   }
 
   # aws-auth configmap
-  manage_aws_auth_configmap = true
+  #manage_aws_auth_configmap = true
   #create_aws_auth_configmap = true
 
   aws_auth_roles = [
